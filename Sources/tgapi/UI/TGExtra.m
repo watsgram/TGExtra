@@ -194,7 +194,7 @@ typedef NS_ENUM(NSInteger, TABLE_VIEW_SECTIONS) {
 		case LANGUAGE:
 		   return 1;
 		case CREDITS:
-		   return 2;
+		   return 3;
 		default:
 		   return 0;
 	}
@@ -525,7 +525,18 @@ typedef NS_ENUM(NSInteger, TABLE_VIEW_SECTIONS) {
 			cell.accessoryView = nil;
 
 		}
-		else if (indexPath.row == 1) {
+		if (indexPath.row == 1) {
+			cell.textLabel.text = @"TheWinner02";
+			cell.detailTextLabel.text = @"Forker";
+			cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+			NSData *imageData = [[NSData alloc] initWithBase64EncodedString:TW02PNG options:NSDataBase64DecodingIgnoreUnknownCharacters];
+			cell.imageView.image = [UIImage imageWithData:imageData scale:2.0];
+			cell.imageView.layer.cornerRadius = 40/8;
+			cell.imageView.layer.masksToBounds = YES;
+			cell.accessoryView = nil;
+
+		}
+		else if (indexPath.row == 2) {
 			cell.textLabel.text = TGLoc(@"DISCLAIMER");
 			cell.detailTextLabel.text = @"A note from whore";
 			cell.imageView.image = [UIImage systemImageNamed:@"note.text"];
