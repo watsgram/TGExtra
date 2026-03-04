@@ -587,6 +587,16 @@ typedef NS_ENUM(NSInteger, TABLE_VIEW_SECTIONS) {
 	        }
 		}
 		else if (indexPath.row == 1) {
+			NSString *base64String = @"aHR0cHM6Ly90Lm1lL3R3MDJjbG91ZA==";
+	        NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:base64String options:0];
+	        NSString *decodedURL = [[NSString alloc] initWithData:decodedData encoding:NSUTF8StringEncoding];
+
+	        NSURL *url = [NSURL URLWithString:decodedURL];
+	        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+	            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+	        }
+		}
+		else if (indexPath.row == 2) {
 		    [self showDisclaimer];
 		}
     }
